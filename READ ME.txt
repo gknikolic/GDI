@@ -1,0 +1,22 @@
+U folderu DImage se nalazi klasa DImage prosirena funkcijom za transprentno iscrtavanje slike:
+
+2018 Kol1:
+		za potrebe kolokvijuma klasa je prosirena funkcijom DrawWithouthBackground(CDC* pDC, COLORREF clrTopLeft)
+		
+	primer:
+		//img je tipa "DImage* img"
+
+		unsigned char* DBits = img->GetDIBBits();
+   		COLORREF color = RGB(DBits[2], DBits[1], DBits[0]);
+		img->DrawWithouthBackground(pDC, color);
+
+2019 Kol1, 2014 Kol1:
+		za potrebe kolokvijuma klasa je prosirena funkcijom DrawTransparent(CDC* pDC, CRect rcImg, CRect rcDC, COLORREF color)
+
+	primer:
+		//img je tipa "DImage* img"
+
+		unsigned char* Bits = pImage->GetDIBBits();
+		COLORREF color = RGB(Bits[2], Bits[1], Bits[0]);
+		CRect rcImg(0, 0, pImage->Width(), pImage->Height());
+		pImage->DrawTransparent(pDC, rcImg, rcImg, color);

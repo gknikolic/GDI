@@ -1,0 +1,11 @@
+Tools->Options->Text editor->C/C++->General->Parameter information (check if you want suggestions)
+
+tan(45), atan
+cetke na papiru, seti se kako koja izgleda
+
+2014Kol1Automobil 
+	- Ucitavanje DImage i metafajlova, konstuktor i destruktor
+	- OnKeyDown funkcija //verovatno ne treba, jer se kroz Visual Stuido pravi na kolokvijumu
+	- OnDraw  
+	- Draw //moj draw
+	- uzimanje bitova iz DImage

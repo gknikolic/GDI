@@ -1,0 +1,18 @@
+y = a*sin(b*x+c)+d
+
+c - shift po X osi
+d - shift po Y osi
+
+b=2Pi/w
+x - vrednost tacke na x osi
+
+https://flexbooks.ck12.org/cbook/ck-12-precalculus-concepts-2.0/section/5.5/primary/lesson/frequency-and-period-of-sinusoidal-functions-pcalc
+
+
+//OBRAZAC NA ISPITU
+
+izracunajTacku(){
+
+//racuna tacku na osnovu obrazca
+}
+
