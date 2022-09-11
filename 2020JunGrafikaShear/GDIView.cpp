@@ -236,7 +236,7 @@ void GDIView::DrawFlag(CDC* pDC, DImage* img, float cy, float cx, float a, int n
 
         Translate(pDC, cx, cy, false);
         float pomerajX = w / n; //pomeraj po x osi
-        float b = toDeg * 2 * pi / w;
+        float korakUglaPoX = 360 / w;
 
         float y, sx, sy = 0;
         float staroY = 0;
@@ -244,10 +244,10 @@ void GDIView::DrawFlag(CDC* pDC, DImage* img, float cy, float cx, float a, int n
     
         //pDC->Ellipse(-5, -5, 5, 5);
         //Shear(pDC, 0, -0.1, false); //NE TREBA ZA SLIKU POD B!
-        float stranica = 1.0 / n;
+        //float stranica = 1.0 / n;
         for (int i = 0; i < n; i++) {
             x = (i + 1) * pomerajX;
-            y = -a * sin(b * x * toRad); //cos(Pi/6)->cos(30)!!! mora toDeg
+            y = -a * sin(korakUglaPoX * x * toRad); //cos(Pi/6)->cos(30)!!! mora toDeg // posto y raste na dole, ovde imamo - da bi sunus prvo poceo da raste
             sx = (y - staroY) / pomerajX;
 
             Shear(pDC, sx, 0, false);
@@ -255,7 +255,7 @@ void GDIView::DrawFlag(CDC* pDC, DImage* img, float cy, float cx, float a, int n
             grafika->Draw(pDC, CRect(i * grafika->Width() / n, 0, (i + 1) * grafika->Width() / n, grafika->Height()), CRect(0, 0, pomerajX, h));
             //grafika->Draw(pDC, CRect(i*stranica*grafika->Width(), 0,(i*stranica+stranica)*grafika->Width(), grafika->Height()), CRect(0, 0, pomerajX, h));
             Translate(pDC, pomerajX, 0, false);
-            Shear(pDC, -sx, 0, false);
+            Shear(pDC, -sx, 0, false); // ponistava se transformacija
             staroY = y;
         }
         //Shear(pDC, 0, 0.1, false);
@@ -281,15 +281,17 @@ void GDIView::DrawFlags(CDC* pDC, DImage* img, float cy, float cx, int m, float 
         points[i].y= hipotenuza * sin(i * angle * toRad);
     }
 
-    for (int i = 0; i < m; i++) {
-        pDC->MoveTo(points[i]);
-        pDC->LineTo(points[(i + 1) % m]);
+    //for (int i = 0; i < m; i++) {
+    //    pDC->MoveTo(points[i]);
+    //    pDC->LineTo(points[(i + 1) % m]);
+    //}
 
-    }
     pDC->MoveTo(0,0);
     for (int i = 0; i < m; i++) {
+        // levo mnozenje znaci da pomeramo lokalni koordinatni sistem, a transformacije se izvrsavaju u redosledu u kom se navode
         Rotate(pDC, (i*angle), false);
         Translate(pDC, nalegla,-h/2, false);
+        //pDC->Ellipse(-10, -10, 10, 10);
         DrawFlag(pDC, img, 0, 0, a, n, h, w);
         //DrawFlag(pDC, img, -h/2, nalegla, a, n, h, w);
         Translate(pDC, -nalegla, h/2, false);
@@ -304,6 +306,13 @@ void GDIView::Draw(CDC* pDC) {
     Scale(pDC, 0.5, 0.5, false);
     DrawFlags(pDC, grafika, 200, 200,6, 20, 8, 100, 200);
     Scale(pDC, 2, 2, false);
+
+    // vezbanje
+    //pDC->Ellipse(-10, -10, 10, 10);
+    //Rotate(pDC, 45, false); Translate(pDC, 50, 0, false);
+    //pDC->MoveTo(0, 0);
+    //pDC->LineTo(320, 0);
+    //Rotate(pDC, -45, false); Translate(pDC, -50, 0, false);
 }
 #pragma endregion
 #pragma endregion
