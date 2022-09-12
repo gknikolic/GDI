@@ -247,8 +247,8 @@ void GDIView::DrawBicycle(CDC* pDC, int r, int n, int d, int alpha, int beta) {
     pDC->LineTo(0.2 * r, -1.6 * r);
     pDC->MoveTo(0, 0);
 
-    float xPedale = sin(alpha * toRad) * 0.4 * r;
-    float yPedale = cos(alpha * toRad) * 0.4 * r;
+    float xPedale = cos(alpha * toRad) * 0.4 * r;
+    float yPedale = sin(alpha * toRad) * 0.4 * r;
 
     pDC->LineTo(-xPedale, -yPedale);
     pDC->MoveTo(-xPedale - 0.1 * r, -yPedale);
@@ -260,10 +260,10 @@ void GDIView::DrawBicycle(CDC* pDC, int r, int n, int d, int alpha, int beta) {
     pDC->LineTo(xPedale + 0.1 * r, yPedale);
     pDC->MoveTo(0, 0);
 
-    float x1Sedista = sin(beta * toRad) * rVelikogRama;
-    float y1Sedista = cos(beta * toRad) * rVelikogRama;
-    float x2Sedista = sin(beta * toRad) * (rVelikogRama + 0.2 * r);
-    float y2Sedista = cos(beta * toRad) * (rVelikogRama + 0.2 * r);
+    float x1Sedista = cos(beta * toRad) * rVelikogRama;
+    float y1Sedista = sin(beta * toRad) * rVelikogRama;
+    float x2Sedista = cos(beta * toRad) * (rVelikogRama + 0.2 * r);
+    float y2Sedista = sin(beta * toRad) * (rVelikogRama + 0.2 * r);
 
     pDC->MoveTo(x1Sedista, -y1Sedista);
     pDC->LineTo(x2Sedista, -y2Sedista);
@@ -326,7 +326,7 @@ void GDIView::SaveDC(CDC* pDC, CRect rcDC, CRect rcBmp) {
     delete saveDC;
 }
 void GDIView::Draw(CDC* pDC) {
-    DrawBicycle(pDC, 100, 18, 4, 45, 30);
+    DrawBicycle(pDC, 100, 18, 4, 45, 60);
 }
 
 #pragma endregion
