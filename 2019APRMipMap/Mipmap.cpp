@@ -28,7 +28,7 @@ CMipmap::CMipmap(CDC* pDC, CString nazivSlike) {
     width = img.Width();
     height = img.Height();
     float startWidth = 0;
-    while (!(width == 1 && height == 1)) {
+    do {
         img.Draw(drawDC, CRect(0, 0, img.Width(), img.Height()), CRect(startWidth, 0, startWidth + width, height));
         startWidth += width;
 
@@ -37,8 +37,7 @@ CMipmap::CMipmap(CDC* pDC, CString nazivSlike) {
 
         if (height > 1)
             height /= 2;
-    }
-    img.Draw(drawDC, CRect(0, 0, img.Width(), img.Height()), CRect(startWidth, 0, startWidth + width, height));
+    } while (!(width == 1 && height == 1));
 }
 
 void CMipmap::DrawMipmap(CDC* pDC, int x, int y, int size) {

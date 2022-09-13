@@ -352,10 +352,10 @@ void GDIView::Draw(CDC* pDC) {
 
 
 
-    /*DImage img2(drawBitmap);
+    DImage img2(drawBitmap);
     img.Draw(pDC, CRect(0, 0, img.Width(), img.Height()), CRect(0, 0, img.Width() , img.Height()));
     Translate(pDC, img.Width(), img.Height(), false);
-    img2.Draw(pDC, CRect(0, 0, img2.Width(), img2.Height()), CRect(0, 0, img2.Width(), img2.Height()));*/
+    img2.Draw(pDC, CRect(0, 0, img2.Width(), img2.Height()), CRect(0, 0, img2.Width(), img2.Height()));
 
     
 }

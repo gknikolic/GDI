@@ -201,11 +201,11 @@ void GDIView::DrawWheel(CDC* pDC, double r1, double r2, double w) {
     pDC->SelectObject(&brush);
 
     pDC->Rectangle(-w / 2, -r2, w / 2, r2);
-    Rotate(pDC, 45, false);
+    Rotate(pDC, 60, false);
     pDC->Rectangle(-w / 2, -r2, w / 2, r2);
-    Rotate(pDC, -90, false);
+    Rotate(pDC, -120, false);
     pDC->Rectangle(-w / 2, -r2, w / 2, r2);
-    Rotate(pDC, 45, false);
+    Rotate(pDC, 60, false);
 
     brush.DeleteObject();
 }
@@ -242,7 +242,7 @@ void GDIView::DrawWP(CDC* pDC, double r1, double r2, double w, double L, double 
 }
 void GDIView::Draw(CDC* pDC) {
     //DrawWheel(pDC, 100, 80, 20);
-    DrawWP(pDC, 100, 80, 20, 700, 15, 1);
+    DrawWP(pDC, 100, 80, 20, 700, 15, 0);
 }
 
 #pragma endregion
@@ -271,12 +271,12 @@ void GDIView::OnDraw(CDC* pDC)
 
     //----------------------------------------------
 
-    //Translate(memDC, 100, 400, false);
-    //Draw(memDC);
+    Translate(memDC, 100, 400, false);
+    Draw(memDC);
 
-    Translate(memDC, 100, 100, false);
-    CMipmap c(memDC, CString("Grafika.png"));
-    c.DrawMipmap(memDC, 0, 0, 8000);
+    //Translate(memDC, 100, 100, false);
+    //CMipmap c(memDC, CString("Grafika.png"));
+    //c.DrawMipmap(memDC, 0, 0, 8000);
     
     //----------------------------------------------
 

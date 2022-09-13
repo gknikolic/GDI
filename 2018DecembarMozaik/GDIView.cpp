@@ -374,7 +374,8 @@ void GDIView::DrawRow(CDC* pDC, float a, float b, float x, float h, int nCols,in
                 DrawTrap(pDC, a, b, x, h, matColors[row][j]);
                 Scale(pDC, 1, -1, false);
             }
-            Translate(pDC, b - x, -h, false);
+            Translate(pDC, b - x, -h, false); // b - x zato sto crtamo iz gornjeg levog temena kada je a (kraca stranica) gore, pa posle okretanja po y
+            // poc koord sistet nije u temenu prethodonog trapeza nego je pomereno za x (x je deo od visine do kraja vece osnove) -> a+2x=b
         }
     }
     //crtam poslednji
@@ -405,7 +406,7 @@ void GDIView::SavePuzzle(CDC* pDC, CRect rcPuzzle, CString sFile) {
 
 void GDIView::DrawEndText(CDC* pDC, CRect rcPuzzle, CString sText, int fnSize, COLORREF clrText){
     int brSlova = sText.GetLength();
-    float angle = 180. / (brSlova-1);
+    float angle = 180. / (brSlova-1); // -1 zbog null terminated string char
     float r = 0.8 * rcPuzzle.Height();
     
     Translate(pDC, rcPuzzle.Width() / 2, -rcPuzzle.Height() * 0.1, false);
