@@ -37,9 +37,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2020DecembarCOVID19", "2020
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vezbanje", "Vezbanje\Vezbanje.vcxproj", "{9545B3C0-77A9-4C51-A49D-CFC290A90B81}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2019SepCone", "..\2019 SEP (sa resenjem)\2019 SEP Dunster\GDI\MFCApplication1\MFCApplication1.vcxproj", "{6739CB21-1A1E-41F1-B81B-671EA710B30C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2019SepCone", "2019SEPKupa\2019 SEP Dunster\GDI\MFCApplication1\MFCApplication1.vcxproj", "{6739CB21-1A1E-41F1-B81B-671EA710B30C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2019JanCan", "..\2019 JAN\2019 JAN Dunster\GDI\GDI\GDI.vcxproj", "{6DC35A61-6591-4C3B-9306-48A55F1C1DAC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2019JanCan", "2019JANLimenka\2019 JAN Dunster\GDI\GDI\GDI.vcxproj", "{6DC35A61-6591-4C3B-9306-48A55F1C1DAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
