@@ -118,22 +118,23 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 {
 	float increment = 360 / n;
 
-	pDC->MoveTo(cx, cy); // vrh kupe
+	Translate(pDC, cx, cy, false);
+	pDC->MoveTo(0, 0); // vrh kupe
 
 	// omotac
 	for (int i = ceil(n / 2.0); i < n; i++) { // samo prednja strana omotaca
 		pDC->BeginPath();
-		float x = a * cos(increment * i * toRad) + cx;
-		float y = b * sin(increment * i * toRad) + cy + h;
+		float x = a * cos(increment * i * toRad);
+		float y = b * sin(increment * i * toRad) + h;
 
 		pDC->LineTo(x, y);
 
-		x = a * cos(increment * (i + 1) * toRad) + cx;
-		y = b * sin(increment * (i + 1) * toRad) + cy + h;
+		x = a * cos(increment * (i + 1) * toRad);
+		y = b * sin(increment * (i + 1) * toRad) + h;
 
 		pDC->LineTo(x, y);
 
-		pDC->LineTo(cx, cy);
+		pDC->LineTo(0, 0);
 
 		pDC->EndPath();
 
@@ -150,15 +151,15 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 	}
 
 	// omotac
-	float x = a * cos(0) + cx;
-	float y = b * sin(0) + cy +h;
+	float x = a * cos(0);
+	float y = b * sin(0) + h;
 	pDC->MoveTo(x, y);
 
 	pDC->BeginPath();
 
 	for (int i = 1; i < n; i++) {
-		float x = a * cos(increment * i * toRad) + cx;
-		float y = b * sin(increment * i * toRad) + cy + h;
+		float x = a * cos(increment * i * toRad);
+		float y = b * sin(increment * i * toRad) + h;
 
 		pDC->LineTo(x, y);
 	}
@@ -176,29 +177,31 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 
 	pDC->SelectObject(&brush);
 	pDC->StrokeAndFillPath();
+
+	Translate(pDC, -cx, -cy, false);
 }
 
 void CMFCApplication1View::DrawConeTop(CDC* pDC, float cx, float cy, float a, float b, float h, int n)
 {
 	float increment = 360 / n;
 
-
-	pDC->MoveTo(cx, cy);
+	Translate(pDC, cx, cy, false);
+	pDC->MoveTo(0, 0); //vrh kupe
 
 
 	for (int i = 0; i < ceil( n / 2.0); i++) {
 		pDC->BeginPath();
-		float x = a * cos(increment * i * toRad) + cx;
-		float y = b * sin(increment * i * toRad) + cy+h;
+		float x = a * cos(increment * i * toRad) ;
+		float y = b * sin(increment * i * toRad) + h;
 
 		pDC->LineTo(x, y);
 
-		x = a * cos(increment * (i + 1) * toRad) + cx;
-		y = b * sin(increment * (i + 1) * toRad) + cy+h;
+		x = a * cos(increment * (i + 1) * toRad);
+		y = b * sin(increment * (i + 1) * toRad) + h;
 
 		pDC->LineTo(x, y);
 
-		pDC->LineTo(cx, cy);
+		pDC->LineTo(0, 0);
 
 		pDC->EndPath();
 
@@ -214,23 +217,23 @@ void CMFCApplication1View::DrawConeTop(CDC* pDC, float cx, float cy, float a, fl
 		pDC->StrokeAndFillPath();
 	}
 
-
+	Translate(pDC, -cx, -cy, false);
 }
 
 void CMFCApplication1View::DrawFigure(CDC* pDC, float cx, float cy, float a, float b, float h, int n, float r)
 {
 
-	this->Translate(pDC, cx, cy, true);
+	Translate(pDC, cx, cy, false);
 
-	this->Rotate(pDC, 45, false);
-	this->DrawConeTop(pDC, 0, r, a, b, h, n);
-	this->Rotate(pDC, 90, false);
-	this->DrawConeTop(pDC, 0, r, a, b, h, n);
+	Rotate(pDC, 45, false);
+	DrawConeTop(pDC, 0, r, a, b, h, n);
+	Rotate(pDC, 90, false);
+	DrawConeTop(pDC, 0, r, a, b, h, n);
 
-	this->Rotate(pDC, 90, false);
-	this->DrawConeBottom(pDC, 0, r, a, b, h, n);
-	this->Rotate(pDC, 90, false);
-	this->DrawConeBottom(pDC, 0, r, a, b, h, n);
+	Rotate(pDC, 90, false);
+	DrawConeBottom(pDC, 0, r, a, b, h, n);
+	Rotate(pDC, 90, false);
+	DrawConeBottom(pDC, 0, r, a, b, h, n);
 }
 
 
