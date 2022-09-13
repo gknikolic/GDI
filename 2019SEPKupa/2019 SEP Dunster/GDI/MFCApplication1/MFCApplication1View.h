@@ -14,6 +14,11 @@ protected: // create from serialization only
 // Attributes
 public:
 	CMFCApplication1Doc* GetDocument() const;
+#pragma region Attributers
+	double pi = atan(1) * 4;
+	double toRad = pi / 180;
+	double toDeg = 180 / pi;
+#pragma endregion
 
 // Operations
 public:

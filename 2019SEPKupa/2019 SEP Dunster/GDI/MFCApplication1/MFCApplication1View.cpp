@@ -116,20 +116,20 @@ void CMFCApplication1View::Rotate(CDC* pDC, float alpha, bool right)
 
 void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a, float b, float h, int n)
 {
-	float increment = 6.28 / n;
+	float increment = 360 / n;
 
-	pDC->MoveTo(cx, cy);
+	pDC->MoveTo(cx, cy); // vrh kupe
 
-
-	for (int i = ceil(n / 2.0); i < n; i++) {
+	// omotac
+	for (int i = ceil(n / 2.0); i < n; i++) { // samo prednja strana omotaca
 		pDC->BeginPath();
-		float x = a * cos(increment * i) + cx;
-		float y = b * sin(increment * i) + cy + h;
+		float x = a * cos(increment * i * toRad) + cx;
+		float y = b * sin(increment * i * toRad) + cy + h;
 
 		pDC->LineTo(x, y);
 
-		x = a * cos(increment * (i + 1)) + cx;
-		y = b * sin(increment * (i + 1)) + cy + h;
+		x = a * cos(increment * (i + 1) * toRad) + cx;
+		y = b * sin(increment * (i + 1) * toRad) + cy + h;
 
 		pDC->LineTo(x, y);
 
@@ -149,6 +149,7 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 		pDC->StrokeAndFillPath();
 	}
 
+	// omotac
 	float x = a * cos(0) + cx;
 	float y = b * sin(0) + cy +h;
 	pDC->MoveTo(x, y);
@@ -156,8 +157,8 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 	pDC->BeginPath();
 
 	for (int i = 1; i < n; i++) {
-		float x = a * cos(increment * i) + cx;
-		float y = b * sin(increment * i) + cy + h;
+		float x = a * cos(increment * i * toRad) + cx;
+		float y = b * sin(increment * i * toRad) + cy + h;
 
 		pDC->LineTo(x, y);
 	}
@@ -179,7 +180,7 @@ void CMFCApplication1View::DrawConeBottom(CDC* pDC, float cx, float cy, float a,
 
 void CMFCApplication1View::DrawConeTop(CDC* pDC, float cx, float cy, float a, float b, float h, int n)
 {
-	float increment = 6.28 / n;
+	float increment = 360 / n;
 
 
 	pDC->MoveTo(cx, cy);
@@ -187,13 +188,13 @@ void CMFCApplication1View::DrawConeTop(CDC* pDC, float cx, float cy, float a, fl
 
 	for (int i = 0; i < ceil( n / 2.0); i++) {
 		pDC->BeginPath();
-		float x = a * cos(increment * i) + cx;
-		float y = b * sin(increment * i) + cy+h;
+		float x = a * cos(increment * i * toRad) + cx;
+		float y = b * sin(increment * i * toRad) + cy+h;
 
 		pDC->LineTo(x, y);
 
-		x = a * cos(increment * (i + 1)) + cx;
-		y = b * sin(increment * (i + 1)) + cy+h;
+		x = a * cos(increment * (i + 1) * toRad) + cx;
+		y = b * sin(increment * (i + 1) * toRad) + cy+h;
 
 		pDC->LineTo(x, y);
 
